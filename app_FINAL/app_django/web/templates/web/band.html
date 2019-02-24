@@ -1,0 +1,12 @@
+{%extends "web/base.html" %}
+{% block content %}
+    <h1>{{ band.name }}<br></h1>
+    {% for album in albums %}
+        {% if album.band.id == band.id %}
+                    <a href="{% url 'album' album.id %}">{{album.name}}</a>
+            <a href="{% url 'delete_album' album.id %}"><button type="button" class="btn btn-default" >Delete</button></a>
+            <br>
+        {% endif %}
+
+    {% endfor %}
+{% endblock content %}

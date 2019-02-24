@@ -1,0 +1,37 @@
+{%extends "web/base.html" %}
+{% block content %}
+
+    {% for band in bands %}
+        <article class="media content-section">
+          <div class="media-body">
+            <h1><a class="article-title" href="{% url 'band' band.id %}">{{ band.name }}</a><a href="{% url 'delete_band' band.id %}"><button type="button" class="btn btn-default" >Delete</button></a></h1>
+
+              <br>
+              {% for album in albums %}
+              {% if album.band.id == band.id %}
+
+                <a href="{% url 'album' album.id%}"><h3 class="article-content">{{ album.name }}<a href="{% url 'delete_album' album.id %}"><button type="button" class="btn btn-default" >Delete</button></a></h3></a>
+
+                <br>
+                <ul>
+
+                    {%for song in songs %}
+                    {% if song.album.id == album.id %}
+                    <a href="{% url 'song' song.id%}"> <li>{{ song.name }} <a href="{% url 'delete_album' album.id %}"><button type="button" class="btn btn-xs btn-default" >Delete</button></a></li></a>
+
+                    <br>
+                    {% endif %}
+
+
+                {% endfor%}
+                                  {% endif %}
+
+                </ul>
+
+              {% endfor %}
+          </div>
+        </article>
+
+
+    {% endfor %}
+{% endblock content %}

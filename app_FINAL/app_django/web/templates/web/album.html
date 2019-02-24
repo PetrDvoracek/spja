@@ -1,0 +1,12 @@
+{%extends "web/base.html" %}
+{% block content %}
+    <h1>{{ album.name }}</h1>
+    <p>release date: {{album.release_date}}</p>
+    <p>{{album.num_stars}} stars!</p>
+    <p>{{album.description}}</p>
+    {% for song in songs %}
+        <a href="{% url 'song' song.id %}">{{ song.name }}</a>
+            <a href="{% url 'delete_song' song.id %}"><button type="button" class="btn btn-default" >Delete</button></a>
+        <br>
+    {% endfor %}
+{% endblock content %}

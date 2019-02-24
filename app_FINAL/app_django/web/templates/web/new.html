@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<head><title>New Recipe</title></head>
+<body>
+<h1>Add A new Recipe Here</h1>
+
+<form action="/recipes/add/" method="post">
+{% csrf_token  %}
+     {% form.as_p %}
+     <input type="submit" value="submit">
+</form>
+</body>
+</html>
